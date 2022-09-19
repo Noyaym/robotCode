@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -31,6 +33,7 @@ public final class Constants {
     public static final double meterIndicator = 1/peremiter*gearRatio*pulsePerRotation;
     public static final double ks=0.00307;
     public static final double kv=0.2564;
+    public static final double wheelBase=0;
 
 
 
