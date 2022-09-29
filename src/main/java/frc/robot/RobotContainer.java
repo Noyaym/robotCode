@@ -18,6 +18,7 @@ import frc.robot.commands.StayFdrive;
 import frc.robot.commands.Turn;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.ShooterExperiment;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -32,7 +33,6 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
@@ -58,7 +58,9 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
 
     // An ExampleCommand will run in autonomous
-    return s.getSelected();
+    return new InstantCommand(()-> shoot.setP(0.3), shoot).andThen(new WaitCommand(2),
+     new InstantCommand(()-> SmartDashboard.putNumber("velocity", shoot.getVelocity())),
+      new InstantCommand(()-> shoot.setP(0), shoot));
 
   }
 
@@ -66,14 +68,16 @@ public class RobotContainer {
   private static RobotContainer me;
   public Joystick LJS;
   public Joystick RJS;
-  public DriveSubsystem drive;
+  public final DriveSubsystem drive;
+  private ShooterExperiment shoot;
   private SendableChooser<Command> s = new SendableChooser<Command>();
   
   public RobotContainer() {
     me=this;
     this.LJS = new Joystick(Constants.LJST);
     this.RJS = new Joystick(Constants.RJST);
-    this.drive = new DriveSubsystem();
+    drive = new DriveSubsystem();
+    shoot = new ShooterExperiment();
     initChooser();
 
 

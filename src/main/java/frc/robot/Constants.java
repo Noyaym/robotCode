@@ -23,7 +23,7 @@ public final class Constants {
     public static final int l4 = 4;
     public static final int jyro = 14;
     public static final int RJST = 0;
-    public static final int LJST = 1;
+    public static final int LJST = 0;
     public static final double range = 0.1;
     public static final double inch = 0.0254;
     public static final double diam = 6*inch;
@@ -33,11 +33,11 @@ public final class Constants {
     public static final double meterIndicator = 1/peremiter*gearRatio*pulsePerRotation;
     public static final double ks=0.00307;
     public static final double kv=0.2564;
-    public static final double wheelBase=0;
+    public static final double wheelBase=0.57;
 
 
 
-    public final class ModuleConstants {
+    public static final class ModuleConstants {
         public static final double SwerveWheelDiam = 0;
         public static final double SwerveWheelPeremiter = SwerveWheelDiam*Math.PI;
         public static final double gearRatioSwerve = 0;
@@ -48,10 +48,31 @@ public final class Constants {
 
     }
 
-    public final class DriveConstants {
-        public static final double maxSpeed = 0;
+    public static final class DriveConstants {
+        public static final double maxSpeed = 2.5; //in m/s
+        public static final double MAX_ANGULR_VELOCITY = Math.PI; //in r/s
     }
+
+
+        public static final int motorPortNum = 0; 
+        public static final double kp = 0;
+        public static final double ki = 0;
+        public static final double kd = 0;
+        public static final double kpMotor = 0.07;
+        public static final double kiMotor = 0;
+        public static final double kdMotor = 0.04;
+        public static final double shooterKs = 0;
+        public static final double shooterKv = 0;
+        public static final double inchS = 0.0254;
+    public static final double diamS = 4*inch;
+    public static final double peremiterS = diam*Math.PI;
+    public static final int gearRatioS = 1;
+    public static final int pulsePerRotationS = 2048;
+    public static final double meterIndicatorS = 1/peremiter*gearRatio*pulsePerRotation;
+
+
     
 
 
 }
+

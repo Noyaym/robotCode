@@ -4,6 +4,7 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -35,9 +36,9 @@ public class DriveByJoystick extends CommandBase{
     }
 
     private double getJSXVal(Joystick j) {
-        double x = -j.getX();
+        double x = j.getX();
         double val;
-        if ((x<Constants.range) && (x>-Constants.range)) {
+        if (Math.abs(x) < Constants.range) {
             val=0.0;
         }
         else {
@@ -50,9 +51,10 @@ public class DriveByJoystick extends CommandBase{
 
     @Override
     public void execute() {
-        double RadiansPerSec = getJSXVal(RobotContainer.getMe().LJS);
-        double speed = getJSYVal(RobotContainer.getMe().LJS);
-        whSpeed = kinematics.toWheelSpeeds(new ChassisSpeeds(speed, 0, RadiansPerSec));
+        double radiansPerSec = getJSXVal(RobotContainer.getMe().LJS) * Constants.DriveConstants.MAX_ANGULR_VELOCITY;
+        SmartDashboard.putNumber("Joystick x", radiansPerSec);
+        double speed = getJSYVal(RobotContainer.getMe().LJS) * Constants.DriveConstants.maxSpeed;
+        whSpeed = kinematics.toWheelSpeeds(new ChassisSpeeds(speed, 0, radiansPerSec));
         drive.setV(whSpeed.leftMetersPerSecond, whSpeed.rightMetersPerSecond);
         
     }
