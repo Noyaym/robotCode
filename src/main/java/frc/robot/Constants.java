@@ -54,15 +54,15 @@ public final class Constants {
     }
 
 
-        public static final int motorPortNum = 0; 
+        public static final int motorPortNum = 3; 
         public static final double kp = 0;
         public static final double ki = 0;
         public static final double kd = 0;
-        public static final double kpMotor = 0.07;
-        public static final double kiMotor = 0;
-        public static final double kdMotor = 0.04;
-        public static final double shooterKs = 0;
-        public static final double shooterKv = 0;
+        public static final double kpMotor = 0.05;
+        public static final double kiMotor = 0.005;
+        public static final double kdMotor = 0;
+        public static final double shooterKs = 0.02;
+        public static final double shooterKv = 0.03;
         public static final double inchS = 0.0254;
     public static final double diamS = 4*inch;
     public static final double peremiterS = diam*Math.PI;

@@ -59,7 +59,7 @@ public class RobotContainer {
 
     // An ExampleCommand will run in autonomous
     return new InstantCommand(()-> shoot.setP(0.3), shoot).andThen(new WaitCommand(2),
-     new InstantCommand(()-> SmartDashboard.putNumber("velocity", shoot.getVelocity())),
+     new InstantCommand(()-> SmartDashboard.putNumber("v yay", shoot.getVelocity())),
       new InstantCommand(()-> shoot.setP(0), shoot));
 
   }
