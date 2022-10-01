@@ -53,7 +53,7 @@ public final class Constants {
         public static final double MAX_ANGULR_VELOCITY = Math.PI; //in r/s
     }
 
-
+    //shooter+hood stuff
         public static final int motorPortNum = 3; 
         public static final double kp = 0;
         public static final double ki = 0;
